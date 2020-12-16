@@ -4,8 +4,7 @@ from os import utime, mkdir, listdir
 from os.path import splitext, exists, join
 from time import mktime
 
-__version__ = '1.0.0'
-__all__ = ['extract']
+
 SIGN = {b'AFS\x00': 'little', b'\x00SFA': 'big'}
 
 
