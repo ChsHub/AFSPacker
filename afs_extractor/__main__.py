@@ -159,7 +159,7 @@ def _write_files(dir_path, header, file_stream, decode_bip=False):
 
 def extract(file_path: str):
     """
-    Extract files contained in .AFS file
+    Extract files contained in .AFS file to a new directory in the same location.
     :param file_path: .AFS file
     """
     with open(file_path, mode='rb') as file_stream:
