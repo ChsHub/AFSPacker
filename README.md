@@ -1,9 +1,6 @@
 # AFS Packer
 AFS Packer can extract the files inside an AFS archive to a folder, or generate a new AFS archive with the files located in a folder. The AFS format is used in many games from companies like Sega.
 
-## Requirements
-The program requires the .NET Framework 4.7.2.
-
 ## Usage
 ```
 AFSPacker -e <input_file> <output_dir> [list_file]        :  Extract AFS archive

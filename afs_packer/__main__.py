@@ -5,6 +5,7 @@ from os.path import splitext, exists, join
 from time import mktime
 
 __version__ = '1.0.0'
+__all__ = ['extract']
 SIGN = {b'AFS\x00': 'little', b'\x00SFA': 'big'}
 
 
@@ -110,7 +111,6 @@ def _create_directory(file_path: str) -> str:
     :param file_path: Parent path
     :return: Path of new directory
     """
-    file_path, _ = splitext(file_path)
     if exists(file_path):
         raise FileExistsError('ERROR: Folder already exists')
     mkdir(file_path)
@@ -160,23 +160,14 @@ def _write_files(dir_path, header, file_stream, decode_bip=False):
 def extract(file_path: str):
     """
     Extract files contained in .AFS file
-    :param file_path: .AFS
+    :param file_path: .AFS file
     """
     with open(file_path, mode='rb') as file_stream:
         # noinspection PyTypeChecker
         header = Header(file_stream=file_stream)
-        file_path = _create_directory(file_path)
+        file_path, _ = splitext(file_path)
+        _create_directory(file_path)
         _write_files(file_path, header, file_stream)
-
-
-def extract_batch(dir_path: str):
-    """
-    Extract files from all .AFS files contained in directory path
-    :param dir_path: Path
-    """
-    for file in listdir(dir_path):
-        if file.endswith('.AFS'):
-            extract(join(file_path, file))
 
 
 def create(path: str):
