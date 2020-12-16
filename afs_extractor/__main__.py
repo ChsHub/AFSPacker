@@ -1,9 +1,8 @@
 from datetime import datetime
 from io import SEEK_SET, BytesIO
-from os import utime, mkdir, listdir
+from os import utime, mkdir
 from os.path import splitext, exists, join
 from time import mktime
-
 
 SIGN = {b'AFS\x00': 'little', b'\x00SFA': 'big'}
 
